@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- pujan -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine's Date</title>
+    <style>
+      #app {
+        background: rgb(254, 254, 254);
+        color: #141415;
+        display: grid;
+        font: 900 3rem Jua;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .box {
+        display: grid;
+        gap: 10px;
+        margin: auto;
+        place-items: center;
+      }
+
+      .gif {
+        height: 400px;
+      }
+
+      .btns {
+        display: flex;
+        gap: 40px;
+        width: 60%;
+      }
+
+      .yes {
+        margin-right: auto;
+      }
+
+      .no {
+        transition: 0.4s all;
+      }
+
+      button {
+        background: #ff0c0c;
+        border: none;
+        border-radius: 18px;
+        color: #fff;
+        cursor: pointer;
+        font: 900 2rem Jua;
+        padding: 15px 30px;
+      }
+      @media only screen and (max-width: 600px) {
+        .box {
+          max-height: 85vh;
+        }
+        .gif {
+          height: 250px; /* Adjust as needed */
+          margin: 0 auto;
+          margin-top: 100px;
+        }
+        p {
+          font-size: 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="box">
+      <img id="gif" alt="flowers" class="gif" src="assests/stitch.gif" />
+      <p>Will you be my Valentine's Date?</p>
+      <div class="btns">
+        <a class="yes" href="/yay.html">
+          <button id="yesBtn">Yes</button>
+        </a>
+        <button id="noBtn" class="no">No</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const gif = document.getElementById("gif");
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+
+        let please = false;
+
+        function prettyPlease() {
+          please = !please;
+          gif.alt = please ? "excited" : "propose";
+          gif.src = please ? "assests/stitch3.gif" : "assests/stitch.gif";
+        }
+
+        function nope() {
+          const x = Math.random() * 90;
+          const y = Math.random() * 90;
+          noBtn.style.position = "absolute";
+          noBtn.style.top = `${x}%`;
+          noBtn.style.right = `${y}%`;
+        }
+
+        yesBtn.addEventListener("mouseover", prettyPlease);
+        yesBtn.addEventListener("mouseout", prettyPlease);
+        noBtn.addEventListener("click", nope);
+        noBtn.addEventListener("mouseover", nope);
+      });
+    </script>
+  </body>
+</html>
